@@ -6,7 +6,7 @@ export default function JoinPage() {
   return (
     <SafeAreaView>
       <View>
-        <Text>jofffifn</Text>
+        <Text>join page</Text>
       </View>
     </SafeAreaView>
   );
