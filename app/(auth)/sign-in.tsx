@@ -1,7 +1,7 @@
 import { useSignIn } from "@clerk/clerk-expo";
 import { Link, useNavigation, useRouter } from "expo-router";
 import { useCallback, useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Alert, Button, Text, TextInput, View } from "react-native";
 
 const SignInScreen = () => {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -31,6 +31,7 @@ const SignInScreen = () => {
       }
     } catch (err: any) {
       console.error(JSON.stringify(err, null, 2));
+      Alert.alert("Whoops !", "Looks like you entered the worng email or password. \n\nPlease try again.")
     }
   }, [isLoaded, emailAddress, password]);
 
