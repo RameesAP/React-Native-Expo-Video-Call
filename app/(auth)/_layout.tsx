@@ -17,6 +17,7 @@ const AuthRoutesLayout = () => {
           options={{
             title: "Sign In to get started",
             headerShown: false,
+            // headerTitleAlign:"center"
           }}
         />
         <Stack.Screen

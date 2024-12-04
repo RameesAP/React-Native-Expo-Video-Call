@@ -1,7 +1,9 @@
 import { useSignIn } from "@clerk/clerk-expo";
 import { Link, useNavigation, useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { useCallback, useState } from "react";
-import { Alert, Button, Text, TextInput, View } from "react-native";
+import { Alert, Button, Platform, Text, TextInput, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignInScreen = () => {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -31,32 +33,38 @@ const SignInScreen = () => {
       }
     } catch (err: any) {
       console.error(JSON.stringify(err, null, 2));
-      Alert.alert("Whoops !", "Looks like you entered the worng email or password. \n\nPlease try again.")
+      Alert.alert(
+        "Whoops !",
+        "Looks like you entered the worng email or password. \n\nPlease try again."
+      );
     }
   }, [isLoaded, emailAddress, password]);
 
   return (
-    <View>
-      <TextInput
-        autoCapitalize="none"
-        value={emailAddress}
-        placeholder="Email..."
-        onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
-      />
-      <TextInput
-        value={password}
-        placeholder="Password..."
-        secureTextEntry={true}
-        onChangeText={(password) => setPassword(password)}
-      />
-      <Button title="Sign In" onPress={onSignInPress} />
+    <SafeAreaView>
       <View>
-        <Text>Don't have an account?</Text>
-        <Link href="/sign-up">
-          <Text>Sign up</Text>
-        </Link>
+        <TextInput
+          autoCapitalize="none"
+          value={emailAddress}
+          placeholder="Email..."
+          onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
+        />
+        <TextInput
+          value={password}
+          placeholder="Password..."
+          secureTextEntry={true}
+          onChangeText={(password) => setPassword(password)}
+        />
+        <Button title="Sign In" onPress={onSignInPress} />
+        <View>
+          <Text>Don't have an account?</Text>
+          <Link href="/sign-up">
+            <Text>Sign up</Text>
+          </Link>
+        </View>
       </View>
-    </View>
+      {/* <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} /> */}
+    </SafeAreaView>
   );
 };
 

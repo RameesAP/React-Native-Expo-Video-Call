@@ -1,5 +1,6 @@
-import { Text } from "@/components/Themed";
+// import { Text } from "@/components/Themed";
 import { SignedIn, SignedOut } from "@clerk/clerk-expo";
+import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
