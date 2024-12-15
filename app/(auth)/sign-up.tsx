@@ -59,6 +59,7 @@ const signUpPage = () => {
 
   return (
     <SafeAreaView>
+      
        <View>
       {!pendingVerification && (
         <>

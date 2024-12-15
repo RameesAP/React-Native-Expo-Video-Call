@@ -1,6 +1,7 @@
 import { useAuth } from "@clerk/clerk-expo";
 import { Redirect, Stack } from "expo-router";
-import { View, Text } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { View, Text, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const AuthRoutesLayout = () => {
@@ -10,7 +11,8 @@ const AuthRoutesLayout = () => {
     return <Redirect href={"/(call)"} />;
   }
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#5F5DEC", }}>
+            <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
       <Stack>
         <Stack.Screen
           name="sign-in"
@@ -30,6 +32,7 @@ const AuthRoutesLayout = () => {
           }}
         />
       </Stack>
+
     </SafeAreaView>
   );
 };
