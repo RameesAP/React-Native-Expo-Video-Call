@@ -1,9 +1,18 @@
+import StyledButton from "@/components/StyledButton";
 import { useSignIn } from "@clerk/clerk-expo";
-import {  MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { Link, useNavigation, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useCallback, useState } from "react";
-import { Alert, Button, KeyboardAvoidingView, Platform, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  Button,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignInScreen = () => {
@@ -41,13 +50,13 @@ const SignInScreen = () => {
       Alert.alert(
         "Whoops!",
         "Looks like you entered the wrong email or password. \n\n Please try again."
-      )
+      );
     }
   }, [isLoaded, emailAddress, password]);
 
   return (
     // <SafeAreaView>
-      <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : undefined}
       style={{
         flex: 1,
@@ -56,44 +65,56 @@ const SignInScreen = () => {
         justifyContent: "center",
         gap: 10,
       }}
-      >
-        <MaterialIcons
+    >
+      <MaterialIcons
         name="video-chat"
         size={160}
         color="white"
-        style={{ alignSelf: "center",justifyContent:"center" }}
-        />
-        <TextInput
-          autoCapitalize="none"
-          style={{padding:20,width:"100%",backgroundColor:"white",borderRadius:10}}
-          value={emailAddress}
-          placeholder="Enter Email"
-          onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
-        />
-        <TextInput
-          value={password}
-          style={{padding:20,width:"100%",backgroundColor:"white",borderRadius:10}}
-          placeholder="Enter Password"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
+        style={{ alignSelf: "center", justifyContent: "center" }}
+      />
+      <TextInput
+        autoCapitalize="none"
+        style={{
+          padding: 20,
+          width: "100%",
+          backgroundColor: "white",
+          borderRadius: 10,
+        }}
+        value={emailAddress}
+        placeholder="Enter Email"
+        onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
+      />
+      <TextInput
+        value={password}
+        style={{
+          padding: 20,
+          width: "100%",
+          backgroundColor: "white",
+          borderRadius: 10,
+        }}
+        placeholder="Enter Password"
+        secureTextEntry={true}
+        onChangeText={(password) => setPassword(password)}
+      />
 
-        <View 
+      <View
         style={{
           borderBottomColor: "white",
           borderBottomWidth: 1,
           marginVertical: 20,
         }}
-        />
-        <Button title="Sign in" onPress={onSignInPress} />
-        <View>
-          <Text>Don't have an account?</Text>
-          <Link href="/sign-up">
-            <Text>Sign up</Text>
-          </Link>
-        </View>
-      </KeyboardAvoidingView>
-      // <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      />
+      {/* <Button title="Sign in" onPress={onSignInPress} /> */}
+
+      <StyledButton title="Sign In" onPress={onSignInPress} />
+      <View>
+        <Text>Don't have an account?</Text>
+        <Link href="/sign-up">
+          <Text>Sign up</Text>
+        </Link>
+      </View>
+    </KeyboardAvoidingView>
+    // <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     // </SafeAreaView>
   );
 };

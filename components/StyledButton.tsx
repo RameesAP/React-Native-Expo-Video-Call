@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
 export default function StyledButton({
@@ -11,8 +11,26 @@ export default function StyledButton({
   style?: any;
 }) {
   return (
-    <View>
-      <Text>StyledButton</Text>
-    </View>
+    <TouchableOpacity
+      onPress={onPress}
+      style={{
+        backgroundColor: "blue",
+        padding: 12,
+        borderRadius: 5,
+        width: "100%",
+        ...style,
+      }}
+    >
+      <Text
+        style={{
+          color: "#5F5DEC",
+          fontSize: 16,
+          textAlign: "center",
+          fontWeight: "bold",
+        }}
+      >
+        {title}
+      </Text>
+    </TouchableOpacity>
   );
 }
