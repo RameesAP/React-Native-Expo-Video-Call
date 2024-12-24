@@ -14,7 +14,7 @@ export default function StyledButton({
     <TouchableOpacity
       onPress={onPress}
       style={{
-        backgroundColor: "blue",
+        backgroundColor: "white",
         padding: 12,
         borderRadius: 5,
         width: "100%",

@@ -33,7 +33,7 @@ const AuthRoutesLayout = () => {
         />
       </Stack>
 
-    </SafeAreaView>
+     </SafeAreaView> 
   );
 };
 

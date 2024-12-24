@@ -107,10 +107,37 @@ const SignInScreen = () => {
       {/* <Button title="Sign in" onPress={onSignInPress} /> */}
 
       <StyledButton title="Sign In" onPress={onSignInPress} />
-      <View>
-        <Text>Don't have an account?</Text>
+
+      <Text style={{ textAlign: "center", color: "white" }}>OR</Text>
+
+      {/* <SignInWithOAuth /> */}
+
+      <View
+        style={{
+          borderBottomColor: "white",
+          borderBottomWidth: 1,
+          marginVertical: 20,
+        }}
+      />
+
+      <View
+        style={{
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ color: "white" }}>Don't have an account?</Text>
         <Link href="/sign-up">
-          <Text>Sign up</Text>
+          <Text
+            style={{
+              color: "white",
+              fontWeight: "bold",
+              textDecorationLine: "underline",
+            }}
+          >
+            Sign up
+          </Text>
         </Link>
       </View>
     </KeyboardAvoidingView>
