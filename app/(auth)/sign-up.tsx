@@ -94,6 +94,7 @@ const signUpPage = () => {
         </View>
       )}
       {pendingVerification && (
+        
         <>
           <TextInput
             value={code}
