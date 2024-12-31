@@ -11,8 +11,8 @@ const AuthRoutesLayout = () => {
     return <Redirect href={"/(call)"} />;
   }
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#5F5DEC", }}>
-            <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#5F5DEC" }}>
+      {/* <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} /> */}
       <Stack>
         <Stack.Screen
           name="sign-in"
@@ -32,8 +32,7 @@ const AuthRoutesLayout = () => {
           }}
         />
       </Stack>
-
-     </SafeAreaView> 
+    </SafeAreaView>
   );
 };
 

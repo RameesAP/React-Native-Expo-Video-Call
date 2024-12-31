@@ -1,21 +1,19 @@
 // import { Text } from "@/components/Themed";
-import { SignedIn, SignedOut } from "@clerk/clerk-expo";
-import { Text } from "react-native";
+import { SignedIn } from "@clerk/clerk-expo";
+import { StatusBar } from "expo-status-bar";
+import { Platform, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
 
 export default function TabOneScreen() {
   return (
-    <SafeAreaView>
-      <Text >Hello world</Text>
-
-      <SignedIn>
-        <Text>you are signed in</Text>
-      </SignedIn>
-
-      <SignedOut>
-        <Text>you are signed out</Text>
-      </SignedOut>
-    </SafeAreaView>
+    // <SafeAreaView>
+      <View>
+        {/* <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} /> */}
+        <Text style={{marginTop:10,backgroundColor: "#5F5DEC"}}>Hello worldd</Text>
+        <SignedIn>
+          <Text>you are signed in</Text>
+        </SignedIn>
+      </View>
+    // </SafeAreaView>
   );
 }

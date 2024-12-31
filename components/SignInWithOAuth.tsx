@@ -19,26 +19,31 @@ export const useWarmUpBrowser = () => {
 
 WebBrowser.maybeCompleteAuthSession();
 
-export default function Page() {
+const SignInWithOAuth = () => {
   useWarmUpBrowser();
 
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
-
   const onPress = useCallback(async () => {
     try {
       const { createdSessionId, signIn, signUp, setActive } =
         await startOAuthFlow({
-          redirectUrl: Linking.createURL("/dashboard", { scheme: "myapp" }),
+          // redirectUrl: Linking.createURL("/dashboard", { scheme: "myapp" }),
+          redirectUrl: Linking.createURL("/(call)", { scheme: "myapp" }),
         });
-
       // If sign in was successful, set the active session
+
       if (createdSessionId) {
         setActive!({ session: createdSessionId });
+        console.log("session created", createdSessionId);
       } else {
         // Use signIn or signUp returned from startOAuthFlow
         // for next steps, such as MFA
+        console.log("SignIn:", signIn);
+        console.log("SignUp:", signUp);
+        console.log("Session not created.");
       }
     } catch (err) {
+      console.error("OAuth Error:", err);
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
       console.error(JSON.stringify(err, null, 2));
@@ -46,4 +51,5 @@ export default function Page() {
   }, []);
 
   return <StyledButton title="Sign in with Google" onPress={onPress} />;
-}
+};
+export default SignInWithOAuth;

@@ -1,10 +1,10 @@
+import SignInWithOAuth from "@/components/SignInWithOAuth";
 import StyledButton from "@/components/StyledButton";
 import { useSignIn } from "@clerk/clerk-expo";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Link, useNavigation, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useCallback, useState } from "react";
-import SignInWithOAuth from "@/components/SignInWithOAuth";
 import {
   Alert,
   Button,

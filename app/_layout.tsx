@@ -1,11 +1,10 @@
+import React from "react";
 import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
 import { Slot } from "expo-router";
 // import * as SplashScreen from "expo-splash-screen";
 import * as SecureStore from "expo-secure-store";
 
 import "react-native-reanimated";
-
-
 
 const tokenCache = {
   async getToken(key: string) {
@@ -44,12 +43,12 @@ if (!publishableKey) {
 
 export default function RootLayout() {
   return (
-    <>
+   <>
       <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
         <ClerkLoaded>
           <Slot />
         </ClerkLoaded>
       </ClerkProvider>
-    </>
+      </>
   );
 }
