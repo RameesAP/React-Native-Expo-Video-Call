@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function CallScreen() {
   return (
-    <View>
+    <View >
       <Text>CallScreen</Text>
     </View>
   )
