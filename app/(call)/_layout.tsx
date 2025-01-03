@@ -28,6 +28,7 @@ export default function CallRoutesLayout() {
   }
 
   const client = StreamVideoClient.getOrCreateInstance({
+    
     apiKey,
     user,
     tokenProvider,
