@@ -28,12 +28,11 @@ export default function CallRoutesLayout() {
   }
 
   const client = StreamVideoClient.getOrCreateInstance({
-    
     apiKey,
     user,
     tokenProvider,
     options: {
-      logger: (logLevel, message: String, ...args: unknown[]) => {},
+      logger: (logLevel, message: String, ...args: unknown[ ]) => {},
     },
   });
 
