@@ -4,8 +4,8 @@ import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import { View } from "react-native";
 import {
-  LogLevel,
-  logLevels,
+  // LogLevel,
+  // logLevels,
   StreamVideo,
   StreamVideoClient,
   User,
