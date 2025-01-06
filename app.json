@@ -15,7 +15,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bitcode": false
+      "bitcode": false,
+      "bundleIdentifier": "com.rameesap.videocalling"
     },
     "android": {
       "adaptiveIcon": {

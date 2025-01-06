@@ -37,7 +37,7 @@ export default function TabOneScreen() {
         />
       </Dialog.Container>
 
-      <Text>Hello worldd</Text>
+      <Text>Hello world</Text>
       <SignedIn>
         <Text>you are signed in</Text>
       </SignedIn>

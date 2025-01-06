@@ -8,7 +8,7 @@
       "developmentClient": true,
       "distribution": "internal"
     },
-    "development-simulatoor":{
+    "development-simulator":{
       "developmentClient": true,
       "distribution": "internal",
       "env":{
