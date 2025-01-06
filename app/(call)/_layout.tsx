@@ -4,8 +4,9 @@ import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import { View } from "react-native";
 import {
-  // LogLevel,
-  // logLevels,
+  name,
+  LogLevel,
+  logLevels,
   StreamVideo,
   StreamVideoClient,
   User,
@@ -27,12 +28,38 @@ export default function CallRoutesLayout() {
     return <Redirect href={"/(auth)/sign-in"} />;
   }
 
+  const user: User = {
+    id: clerkUser.id,
+    name: clerkUser.fullName!,
+    image: clerkUser.imageUrl!,
+  };
+
+  const tokenProvider = async () => {
+    const response = await fetch(
+      `${process.env.EXPO_PUBLIC_API_URL}/generateUserToken`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: clerkUser.id,
+          name: clerkUser.fullName!,
+          image: clerkUser.imageUrl!,
+          email: clerkUser.primaryEmailAddress?.toString()!,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data.token;
+  };
+
   const client = StreamVideoClient.getOrCreateInstance({
     apiKey,
     user,
     tokenProvider,
     options: {
-      logger: (logLevel, message: String, ...args: unknown[ ]) => {},
+      logger: (logLevel, message: String, ...args: unknown[]) => {},
     },
   });
 
