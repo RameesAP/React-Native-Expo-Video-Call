@@ -59,7 +59,7 @@ export default function CallRoutesLayout() {
     user,
     tokenProvider,
     options: {
-      logger: (logLevel, message: String, ...args: unknown[]) => {},
+      logger: (logLevel:LogLevel, message: String, ...args: unknown[]) => {},
     },
   });
 
