@@ -94,6 +94,7 @@ export default function CallRoutesLayout() {
               title: "Start a New call",
               unmountOnBlur: true,
               header: () => null,
+
               tabBarIcon: ({ color }) => {
                 return (
                   <View

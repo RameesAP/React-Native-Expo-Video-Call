@@ -12,7 +12,7 @@ const AuthRoutesLayout = () => {
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#5F5DEC" }}>
-      {/* <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} /> */}
+      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
       <Stack>
         <Stack.Screen
           name="sign-in"
