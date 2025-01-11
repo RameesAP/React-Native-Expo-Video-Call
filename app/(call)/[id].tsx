@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
   Call,
@@ -8,6 +8,7 @@ import {
 } from "@stream-io/video-react-native-sdk";
 import { useLocalSearchParams } from "expo-router";
 import Room from "@/components/Room";
+import { generateSlug } from "random-word-slugs";
 
 export default function CallScreen() {
   const { id } = useLocalSearchParams();
@@ -25,8 +26,15 @@ export default function CallScreen() {
         setCall(_call);
       });
     } else {
+      slug = generateSlug(3, {
+        categories: {
+          adjective: ["color", "personality"],
+          noun: ["animals", "food"],
+        },
+      });
+
       //createing a new call
-      slug = "demoroom";
+      // slug = "demoroom";
       const _call = client?.call("default", slug);
       _call?.join({ create: true }).then(() => {
         //have a toast popup

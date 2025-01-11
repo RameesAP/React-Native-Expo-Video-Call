@@ -3,6 +3,7 @@ import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
 import { Slot } from "expo-router";
 // import * as SplashScreen from "expo-splash-screen";
 import * as SecureStore from "expo-secure-store";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 import "react-native-reanimated";
 
@@ -43,12 +44,14 @@ if (!publishableKey) {
 
 export default function RootLayout() {
   return (
-   <>
+    <>
       <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
         <ClerkLoaded>
-          <Slot />
+          <RootSiblingParent>
+            <Slot />
+          </RootSiblingParent>
         </ClerkLoaded>
       </ClerkProvider>
-      </>
+    </>
   );
 }
