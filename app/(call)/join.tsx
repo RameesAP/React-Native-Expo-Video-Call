@@ -5,6 +5,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { inverseFormatSlug } from "@/lib/slug";
 
 export default function JoinPage() {
+  
   const [roomId, setRoomId] = useState("");
 
   const handleJoinRoom = async () => {
