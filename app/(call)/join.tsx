@@ -12,7 +12,6 @@ export default function JoinPage() {
     if (!roomId) return;
     const slug = inverseFormatSlug(roomId);
   };
-
   return (
     <View
       style={{
