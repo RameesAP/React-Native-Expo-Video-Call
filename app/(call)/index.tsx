@@ -1,13 +1,16 @@
 // import { Text } from "@/components/Themed";
-import { SignedIn, useAuth } from "@clerk/clerk-expo";
+import { SignedIn, useAuth, useUser } from "@clerk/clerk-expo";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Platform, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Dialog from "react-native-dialog";
+import { useStreamVideoClient } from "@stream-io/video-react-native-sdk";
 
 export default function TabOneScreen() {
+  const client = useStreamVideoClient();
+  const user = useUser();
   const [dialogOpen, setDialogOpen] = useState(false);
   const { signOut } = useAuth();
   return (

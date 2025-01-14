@@ -9,6 +9,8 @@ import {
 import { useLocalSearchParams } from "expo-router";
 import Room from "@/components/Room";
 import { generateSlug } from "random-word-slugs";
+import Toast from "react-native-root-toast";
+import { copySlug } from "@/lib/slug";
 
 export default function CallScreen() {
   const { id } = useLocalSearchParams();
@@ -38,6 +40,18 @@ export default function CallScreen() {
       const _call = client?.call("default", slug);
       _call?.join({ create: true }).then(() => {
         //have a toast popup
+
+        Toast.show(
+          "Call Created Successfully \n Tap here to Copy the call ID to share!",
+          {
+            duration: Toast.durations.LONG,
+            position: Toast.positions.CENTER,
+            shadow: true,
+            onPress: async () => {
+              copySlug(slug);
+            },
+          }
+        );
         setCall(_call);
       });
     }

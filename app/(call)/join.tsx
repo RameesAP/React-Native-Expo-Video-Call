@@ -3,14 +3,38 @@ import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TextInput } from "react-native-gesture-handler";
 import { inverseFormatSlug } from "@/lib/slug";
+import { useStreamVideoClient } from "@stream-io/video-react-native-sdk";
+import { useRouter } from "expo-router";
+import Toast from "react-native-root-toast";
 
 export default function JoinPage() {
-  
   const [roomId, setRoomId] = useState("");
+  const client = useStreamVideoClient();
+  const router = useRouter();
 
   const handleJoinRoom = async () => {
     if (!roomId) return;
     const slug = inverseFormatSlug(roomId);
+
+    const call = client?.call("default", slug);
+    call
+      ?.get()
+      .then((callResponce) => {
+        console.log(callResponce);
+        router.push(`/call/${slug}`);
+      })
+      .catch((reason) => {
+        console.log(reason.message);
+
+        Toast.show(
+          "Whoops!\nLooks like the room you're trying to join doesn't exist.",
+          {
+            duration: Toast.durations.LONG,
+            position: Toast.positions.CENTER,
+            shadow: true,
+          }
+        );
+      });
   };
   return (
     <View
