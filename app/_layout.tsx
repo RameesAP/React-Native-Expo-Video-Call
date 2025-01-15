@@ -6,6 +6,7 @@ import * as SecureStore from "expo-secure-store";
 import { RootSiblingParent } from "react-native-root-siblings";
 
 import "react-native-reanimated";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const tokenCache = {
   async getToken(key: string) {
@@ -48,7 +49,9 @@ export default function RootLayout() {
       <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
         <ClerkLoaded>
           <RootSiblingParent>
-            <Slot />
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <Slot />
+            </GestureHandlerRootView>
           </RootSiblingParent>
         </ClerkLoaded>
       </ClerkProvider>
