@@ -35,6 +35,7 @@ export default function IndexScreen() {
       filter_conditions: isMyCalls
         ? {
             //filter calls where user is the creator or a member of call
+            //need to fix this
             $or: [
               { created_by_user_id: user.id },
               { members: { $in: [user.id] } },
