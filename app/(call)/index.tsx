@@ -29,7 +29,10 @@ export default function IndexScreen() {
   const { signOut } = useAuth();
 
   const fetchCalls = async () => {
-    if (!client || !user) return;
+    // if (!client || !user) return;
+    if (!client || !user.isLoaded || !user.user) return;
+
+    const userId = user.user.id; // Safely access `id` here
 
     const { calls } = await client.queryCalls({
       filter_conditions: isMyCalls
@@ -37,8 +40,10 @@ export default function IndexScreen() {
             //filter calls where user is the creator or a member of call
             //need to fix this
             $or: [
-              { created_by_user_id: user.id },
-              { members: { $in: [user.id] } },
+              { created_by_user_id: userId },
+              { members: { $in: [userId] } },
+              // { created_by_user_id: user.id },
+              // { members: { $in: [user.id] } },
             ],
           }
         : {},
